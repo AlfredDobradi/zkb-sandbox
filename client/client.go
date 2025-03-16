@@ -17,6 +17,8 @@ func main() {
 	flag.Parse()
 	log.SetFlags(0)
 
+	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, nil)))
+
 	interrupt := make(chan os.Signal, 1)
 	signal.Notify(interrupt, os.Interrupt)
 

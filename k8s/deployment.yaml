@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ws-sandbox
+spec:
+  selector:
+    matchLabels:
+      app: ws-sandbox
+  template:
+    metadata:
+      labels:
+        app: ws-sandbox
+    spec:
+      containers:
+        - name: ticker
+          image: ghcr.io/alfreddobradi/zkb-sandbox:v0.1.1
+          command:
+            - 'ticker'
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
